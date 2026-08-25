@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "2026.08.25.001",
+  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "source": "sakina-quran-audio",
+  "reciters": [
+    {
+      "id": "mohammed-siddiq-al-minshawi",
+      "name": "الشيخ محمد صديق المنشاوي",
+      "folder": "mohammed-siddiq-al-minshawi",
+      "tracks": [
+        {
+          "surahId": 90,
+          "file": "audio/reciters/mohammed-siddiq-al-minshawi/murattal/090-al-balad.m4a",
+          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/mohammed-siddiq-al-minshawi/murattal/090-al-balad.m4a",
+          "format": "m4a",
+          "mimeType": "audio/mp4",
+          "sizeBytes": 3592987,
+          "durationSeconds": 220.496689,
+          "bitrateKbps": 128,
+          "sha256": "07e2b85f3ceb4a4673d7a330926238b6a24bf19dfb3b12382eba25fbb7d8ad99"
+        }
+      ]
+    }
+  ]
+}
