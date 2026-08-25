@@ -1,20 +1,4 @@
 {
   "schemaVersion": 1,
-  "pending": [
-    {
-      "reciterId": "ahmed-bin-taleb",
-      "reciterName": "الشيخ أحمد بن طالب",
-      "type": "collection",
-      "file": "audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
-      "containsSurahs": [43, 44],
-      "format": "m4a",
-      "mimeType": "audio/mp4",
-      "sizeBytes": 21056800,
-      "durationSeconds": 1299.017143,
-      "bitrateKbps": 128,
-      "sha256": "35eb1c0ee111f21cc1faa924a6959aabd2bb1502118046a5c603df605de5121f",
-      "reason": "تسجيل تجميعي؛ لا يُنشر كسورتين منفصلتين قبل توفير ملف مستقل لكل سورة أو آلية قص موثوقة.",
-      "status": "needs-review"
-    }
-  ]
+  "pending": []
 }

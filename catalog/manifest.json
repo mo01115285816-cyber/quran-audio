@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.08.25.001",
+  "catalogVersion": "2026.08.25.002",
   "generatedAt": "2026-08-25T00:00:00.000Z",
   "source": "sakina-quran-audio",
   "reciters": [
@@ -19,6 +19,35 @@
           "durationSeconds": 220.496689,
           "bitrateKbps": 128,
           "sha256": "07e2b85f3ceb4a4673d7a330926238b6a24bf19dfb3b12382eba25fbb7d8ad99"
+        }
+      ]
+    },
+    {
+      "id": "ahmed-bin-taleb",
+      "name": "الشيخ أحمد بن طالب",
+      "folder": "ahmed-bin-taleb",
+      "tracks": [
+        {
+          "surahId": 43,
+          "file": "audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "format": "m4a",
+          "mimeType": "audio/mp4",
+          "sizeBytes": 21056800,
+          "durationSeconds": 1299.017143,
+          "bitrateKbps": 128,
+          "sha256": "35eb1c0ee111f21cc1faa924a6959aabd2bb1502118046a5c603df605de5121f"
+        },
+        {
+          "surahId": 44,
+          "file": "audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "format": "m4a",
+          "mimeType": "audio/mp4",
+          "sizeBytes": 21056800,
+          "durationSeconds": 1299.017143,
+          "bitrateKbps": 128,
+          "sha256": "35eb1c0ee111f21cc1faa924a6959aabd2bb1502118046a5c603df605de5121f"
         }
       ]
     }
