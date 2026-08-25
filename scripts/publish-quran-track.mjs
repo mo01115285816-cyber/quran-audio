@@ -1,0 +1,35 @@
+import { createHash } from "node:crypto";
+import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
+import { basename, dirname, join } from "node:path";
+
+const required = ["STAGING_DOWNLOAD_URL", "RECITER_ID", "RECITER_NAME_AR", "SURAH_NUMBER", "FILE_EXTENSION"];
+for (const key of required) if (!process.env[key]) throw new Error(`missing_${key.toLowerCase()}`);
+const surah = Number(process.env.SURAH_NUMBER);
+if (!Number.isInteger(surah) || surah < 1 || surah > 114) throw new Error("invalid_surah_number");
+const ext = process.env.FILE_EXTENSION;
+if (!['m4a', 'mp3'].includes(ext)) throw new Error("invalid_file_extension");
+const reciter = process.env.RECITER_ID;
+if (!/^[a-z0-9]+(?:-[a-z0-9]+){0,15}$/.test(reciter)) throw new Error("invalid_reciter_id");
+const slug = String(surah).padStart(3, "0");
+const target = join("audio", "reciters", reciter, "murattal", `${slug}-${reciter}.${ext}`);
+await mkdir(dirname(target), { recursive: true });
+const response = await fetch(process.env.STAGING_DOWNLOAD_URL);
+if (!response.ok || !response.body) throw new Error("staging_download_failed");
+const buffer = Buffer.from(await response.arrayBuffer());
+if (buffer.length < 1 || buffer.length > 99_614_720) throw new Error("invalid_audio_size");
+await writeFile(`${target}.tmp`, buffer);
+await rename(`${target}.tmp`, target);
+const hash = createHash("sha256").update(buffer).digest("hex");
+const manifestPath = "catalog/manifest.json";
+const manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+const reciters = manifest.reciters ?? [];
+let row = reciters.find(item => item.id === reciter);
+if (!row) { row = { id: reciter, name: process.env.RECITER_NAME_AR, folder: reciter, tracks: [] }; reciters.push(row); }
+row.tracks = (row.tracks ?? []).filter(item => item.surahId !== surah);
+row.tracks.push({ surahId: surah, file: target, url: `https://mo01115285816-cyber.github.io/quran-audio/${target}`, format: ext, mimeType: ext === "m4a" ? "audio/mp4" : "audio/mpeg", sizeBytes: (await stat(target)).size, sha256: hash });
+row.tracks.sort((a, b) => a.surahId - b.surahId);
+manifest.reciters = reciters;
+manifest.generatedAt = new Date().toISOString();
+manifest.catalogVersion = `${new Date().toISOString().slice(0, 10).replaceAll("-", ".")}.001`;
+await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+console.log(`published ${basename(target)} sha256=${hash}`);

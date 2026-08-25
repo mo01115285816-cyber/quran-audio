@@ -1,0 +1,67 @@
+name: Publish Quran Track
+
+on:
+  workflow_dispatch:
+    inputs:
+      job_id:
+        required: true
+        type: string
+      staging_download_url:
+        required: true
+        type: string
+      reciter_id:
+        required: true
+        type: string
+      reciter_name_ar:
+        required: true
+        type: string
+      surah_number:
+        required: true
+        type: string
+      file_extension:
+        required: true
+        type: choice
+        options: [m4a, mp3]
+      callback_url:
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download, inspect, publish and regenerate catalog
+        env:
+          JOB_ID: ${{ inputs.job_id }}
+          STAGING_DOWNLOAD_URL: ${{ inputs.staging_download_url }}
+          RECITER_ID: ${{ inputs.reciter_id }}
+          RECITER_NAME_AR: ${{ inputs.reciter_name_ar }}
+          SURAH_NUMBER: ${{ inputs.surah_number }}
+          FILE_EXTENSION: ${{ inputs.file_extension }}
+        run: node scripts/publish-quran-track.mjs
+      - name: Commit generated catalog and audio
+        run: |
+          git config user.name "sakina-quran-audio-worker"
+          git config user.email "actions@github.com"
+          git add audio catalog/manifest.json
+          git diff --cached --quiet || git commit -m "chore(quran): publish ${{ inputs.reciter_id }} surah ${{ inputs.surah_number }}"
+          git push
+      - name: Send authenticated completion callback
+        env:
+          CALLBACK_URL: ${{ inputs.callback_url }}
+          JOB_ID: ${{ inputs.job_id }}
+          WORKER_SECRET: ${{ secrets.QURAN_AUDIO_WORKER_HMAC_SECRET }}
+        run: |
+          body=$(printf '{"jobId":"%s","status":"succeeded","githubRunId":"%s"}' "$JOB_ID" "$GITHUB_RUN_ID")
+          signature=$(printf '%s' "$body" | openssl dgst -sha256 -hmac "$WORKER_SECRET" -hex | sed 's/^.* //')
+          curl --fail --silent --show-error -X POST "$CALLBACK_URL" -H 'content-type: application/json' -H "x-sakina-worker-signature: $signature" --data "$body"
