@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.08.25.002",
+  "catalogVersion": "2026.08.25.003",
   "generatedAt": "2026-08-25T00:00:00.000Z",
   "source": "sakina-quran-audio",
   "reciters": [
@@ -29,25 +29,25 @@
       "tracks": [
         {
           "surahId": 43,
-          "file": "audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
-          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "file": "audio/reciters/ahmed-bin-taleb/murattal/043-az-zukhruf.m4a",
+          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/murattal/043-az-zukhruf.m4a",
           "format": "m4a",
           "mimeType": "audio/mp4",
-          "sizeBytes": 21056800,
-          "durationSeconds": 1299.017143,
-          "bitrateKbps": 128,
-          "sha256": "35eb1c0ee111f21cc1faa924a6959aabd2bb1502118046a5c603df605de5121f"
+          "sizeBytes": 14951819,
+          "durationSeconds": 907.000000,
+          "bitrateKbps": 130,
+          "sha256": "b974fa5fb075ba67109aeaeceffb581f64dd8900edf9230a17108ecafafd3aff"
         },
         {
           "surahId": 44,
-          "file": "audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
-          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/collections/043-044-az-zukhruf-ad-dukhan.m4a",
+          "file": "audio/reciters/ahmed-bin-taleb/murattal/044-ad-dukhan.m4a",
+          "url": "https://mo01115285816-cyber.github.io/quran-audio/audio/reciters/ahmed-bin-taleb/murattal/044-ad-dukhan.m4a",
           "format": "m4a",
           "mimeType": "audio/mp4",
-          "sizeBytes": 21056800,
-          "durationSeconds": 1299.017143,
-          "bitrateKbps": 128,
-          "sha256": "35eb1c0ee111f21cc1faa924a6959aabd2bb1502118046a5c603df605de5121f"
+          "sizeBytes": 6418176,
+          "durationSeconds": 392.017007,
+          "bitrateKbps": 130,
+          "sha256": "413d9112dcc485ea8b47f7fcae1c7bd5cebfcba0d448e84fc6c16f619353628b"
         }
       ]
     }
