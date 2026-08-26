@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "catalogVersion": "2026.08.25.003",
-  "generatedAt": "2026-08-25T00:00:00.000Z",
+  "catalogVersion": "2026.08.26.001",
+  "generatedAt": "2026-08-26T00:00:00.000Z",
   "source": "sakina-quran-audio",
   "reciters": [
     {
@@ -50,6 +50,24 @@
           "sha256": "413d9112dcc485ea8b47f7fcae1c7bd5cebfcba0d448e84fc6c16f619353628b"
         }
       ]
+    },
+    {
+      "id": "muhammad-ayyub",
+      "name": "الشيخ محمد أيوب",
+      "folder": "muhammad-ayyub",
+      "tracks": []
+    },
+    {
+      "id": "abdullah-abdulmohsen-al-qarafi",
+      "name": "الشيخ عبد الله عبد المحسن القرافي",
+      "folder": "abdullah-abdulmohsen-al-qarafi",
+      "tracks": []
+    },
+    {
+      "id": "mishary-rashid-al-afasy",
+      "name": "الشيخ مشاري راشد العفاسي",
+      "folder": "mishary-rashid-al-afasy",
+      "tracks": []
     }
   ]
 }
